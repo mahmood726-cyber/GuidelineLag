@@ -1,0 +1,33 @@
+version: 1
+registered_on: 2026-04-14
+levels:
+  L4: Strong recommend for
+  L3: Weak recommend for
+  L2: May consider
+  L1: Not recommended
+  L0: Recommend against (harm)
+body_mappings:
+  esc:
+    L4: ["Class I"]
+    L3: ["Class IIa"]
+    L2: ["Class IIb"]
+    L1: ["Class III (no benefit)"]
+    L0: ["Class III (harm)"]
+  acc_aha:
+    L4: ["Class I"]
+    L3: ["Class IIa"]
+    L2: ["Class IIb"]
+    L1: ["Class III: No Benefit"]
+    L0: ["Class III: Harm"]
+  nice:
+    L4: ["Offer"]
+    L3: ["Consider"]
+    L2: null
+    L1: ["Do not routinely offer"]
+    L0: ["Do not offer"]
+  ccs:
+    L4: ["Strong recommendation for"]
+    L3: ["Weak recommendation for", "Conditional recommendation for"]
+    L2: ["May be considered"]
+    L1: ["Weak recommendation against"]
+    L0: ["Strong recommendation against"]
