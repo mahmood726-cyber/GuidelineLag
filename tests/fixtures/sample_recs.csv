@@ -1,0 +1,3 @@
+body,topic,edition_year,rec_id,topic_tag,rec_class_raw,rec_text
+esc,heart_failure,2021,7.3.a,sglt2i_hfref,Class I,"Dapagliflozin or empagliflozin are recommended in HFrEF..."
+esc,heart_failure,2016,7.0.x,sglt2i_hfref,absent,"(no recommendation for SGLT2 inhibitors in HFrEF)"
