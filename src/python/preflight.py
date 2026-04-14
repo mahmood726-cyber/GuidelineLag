@@ -26,7 +26,7 @@ def _metafor_installed() -> bool:
         [exe, "-e", "cat(requireNamespace('metafor', quietly=TRUE))"],
         capture_output=True, text=True, timeout=60,
     )
-    return "TRUE" in result.stdout
+    return result.stdout.strip() == "TRUE"
 
 
 def _parse_r_version(banner: str) -> tuple[int, int]:

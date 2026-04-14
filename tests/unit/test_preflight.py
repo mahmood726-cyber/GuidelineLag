@@ -30,3 +30,39 @@ def test_preflight_fails_when_rscript_too_old(tmp_path, monkeypatch):
     monkeypatch.setattr("src.python.preflight._metafor_installed", lambda: True)
     with pytest.raises(PreflightError, match="4.5"):
         check_environment()
+
+
+def test_preflight_fails_when_rda_count_too_low(tmp_path, monkeypatch):
+    pw70 = tmp_path / "Pairwise70" / "data"
+    pw70.mkdir(parents=True)
+    for i in range(10):
+        (pw70 / f"CD{i:06d}_pub1_data.rda").write_bytes(b"\x00")
+    monkeypatch.setattr("src.python.preflight.PAIRWISE70_DATA", pw70)
+    monkeypatch.setattr("src.python.preflight._rscript_version", lambda: "R scripting front-end version 4.5.2 (2025-10-31)")
+    monkeypatch.setattr("src.python.preflight._metafor_installed", lambda: True)
+    with pytest.raises(PreflightError, match=r"only 10"):
+        check_environment()
+
+
+def test_preflight_fails_when_metafor_missing(tmp_path, monkeypatch):
+    pw70 = tmp_path / "Pairwise70" / "data"
+    pw70.mkdir(parents=True)
+    for i in range(501):
+        (pw70 / f"CD{i:06d}_pub1_data.rda").write_bytes(b"\x00")
+    monkeypatch.setattr("src.python.preflight.PAIRWISE70_DATA", pw70)
+    monkeypatch.setattr("src.python.preflight._rscript_version", lambda: "R scripting front-end version 4.5.2 (2025-10-31)")
+    monkeypatch.setattr("src.python.preflight._metafor_installed", lambda: False)
+    with pytest.raises(PreflightError, match="metafor"):
+        check_environment()
+
+
+def test_preflight_fails_when_banner_unparseable(tmp_path, monkeypatch):
+    pw70 = tmp_path / "Pairwise70" / "data"
+    pw70.mkdir(parents=True)
+    for i in range(501):
+        (pw70 / f"CD{i:06d}_pub1_data.rda").write_bytes(b"\x00")
+    monkeypatch.setattr("src.python.preflight.PAIRWISE70_DATA", pw70)
+    monkeypatch.setattr("src.python.preflight._rscript_version", lambda: "garbled output with no version string")
+    monkeypatch.setattr("src.python.preflight._metafor_installed", lambda: True)
+    with pytest.raises(PreflightError, match=r"(?i)parse"):
+        check_environment()
