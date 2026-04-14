@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+PROGRESS.md
+data/pairwise70_cardio/
+data/derived/
+outputs/**/*.html
+outputs/**/*.json
+outputs/truthcert/
+!outputs/dashboard/.gitkeep
+.env
+*.log
