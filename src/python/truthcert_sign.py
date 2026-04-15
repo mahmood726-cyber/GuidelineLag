@@ -39,6 +39,8 @@ def sign_bundle(
     lag_dataset: Path, thresholds_yaml: Path, taxonomy_yaml: Path,
     cd_topics_csv: Path, guideline_manifest: Path,
     out_path: Path,
+    baseline: Path | None = None,
+    mode_manifest: Path | None = None,
 ) -> Path:
     key = os.environ.get("TRUTHCERT_HMAC_KEY")
     if not key:
@@ -54,6 +56,11 @@ def sign_bundle(
         "cd_topics_csv": _sha256(cd_topics_csv),
         "guideline_manifest": _sha256(guideline_manifest),
     }
+    if baseline is not None:
+        hashes["baseline"] = _sha256(baseline)
+    if mode_manifest is not None:
+        hashes["mode_manifest"] = _sha256(mode_manifest)
+
     timestamp = datetime.now(timezone.utc).isoformat()
     git_commit = _git_commit()
     payload = _canonical_payload(hashes, timestamp, git_commit)
@@ -67,6 +74,10 @@ def sign_bundle(
         "signature": sig,
         "algorithm": "HMAC-SHA256",
     }
+    if mode_manifest is not None:
+        mm = json.loads(Path(mode_manifest).read_text(encoding="utf-8"))
+        bundle["mode"] = mm.get("mode", "unknown")
+        bundle["synthetic"] = bool(mm.get("synthetic", False))
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(bundle, indent=2), encoding="utf-8")

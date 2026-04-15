@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "hashes": {
+    "lag_dataset": "8f19b580872a6966645582420bd18c7a3b6bfd33ca577f171b3dc7cdfec9211e",
+    "thresholds_yaml": "b4f5c0e38ebcf9cf671ba30a85eb0ac91336f555e1928cac28ab4a46e446f88e",
+    "taxonomy_yaml": "c271a4bdb3d7717e4cbb5f1287cd3e34e11ed5ee1a5f699dc6cbf29460281fb1",
+    "cd_topics_csv": "dec27216349eb2a681802492212f47b0eb765b2c20185a2f3c5ee262662ec642",
+    "guideline_manifest": "301af65f2e8c6a76c7a801045560f07cf7cc9a3c5c4901f67d974c59eaa8b010",
+    "baseline": "640098a1d465a7210d2b6cb541cf2402899d3a706682447cc9fd37618613e023",
+    "mode_manifest": "1fc7e904dcece130c411707233acfab2149e96c6da2e8595973f1b1593f3cf46"
+  },
+  "timestamp": "2026-04-15T09:44:25.834143+00:00",
+  "git_commit": "a39f03ccd0fd0595a458a36c5864df0f5b617ba2",
+  "signature": "20f12e707e8c4be974e93eb8382a8a440c7f2fcf43d2c2ebba81e8beccc1cd64",
+  "algorithm": "HMAC-SHA256",
+  "mode": "dev-release-blocked",
+  "synthetic": true
+}

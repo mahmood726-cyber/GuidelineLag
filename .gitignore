@@ -9,7 +9,9 @@ outputs/**/*.html
 outputs/**/*.json
 !outputs/baseline_dev.json
 !outputs/mode.json
-outputs/truthcert/
+outputs/truthcert/*
+!outputs/truthcert/bundle_dev.json
 !outputs/dashboard/.gitkeep
 .env
+.secrets/
 *.log

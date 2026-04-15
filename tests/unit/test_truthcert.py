@@ -29,6 +29,33 @@ def test_sign_and_verify_roundtrip(tmp_path, monkeypatch):
     assert verify_bundle(bundle_path) is True
 
 
+def test_dev_mode_bundle_carries_synthetic_flag(tmp_path, monkeypatch):
+    monkeypatch.setenv("TRUTHCERT_HMAC_KEY", "dev-key")
+    for name in ["lag.csv", "thresh.yaml", "tax.yaml", "topics.csv", "manifest.csv"]:
+        (tmp_path / name).write_text(f"{name}-content\n")
+    baseline = tmp_path / "baseline.json"
+    baseline.write_text(json.dumps({"overall_median": 28}))
+    mode_manifest = tmp_path / "mode.json"
+    mode_manifest.write_text(json.dumps({"mode": "dev-release-blocked", "synthetic": True}))
+    bundle_path = tmp_path / "bundle.json"
+    sign_bundle(
+        lag_dataset=tmp_path / "lag.csv",
+        thresholds_yaml=tmp_path / "thresh.yaml",
+        taxonomy_yaml=tmp_path / "tax.yaml",
+        cd_topics_csv=tmp_path / "topics.csv",
+        guideline_manifest=tmp_path / "manifest.csv",
+        baseline=baseline,
+        mode_manifest=mode_manifest,
+        out_path=bundle_path,
+    )
+    assert verify_bundle(bundle_path) is True
+    bundle = json.loads(bundle_path.read_text())
+    assert bundle["mode"] == "dev-release-blocked"
+    assert bundle["synthetic"] is True
+    assert "baseline" in bundle["hashes"]
+    assert "mode_manifest" in bundle["hashes"]
+
+
 def test_verify_fails_on_tampering(tmp_path, monkeypatch):
     monkeypatch.setenv("TRUTHCERT_HMAC_KEY", "test-key")
     for name in ["lag.csv", "thresh.yaml", "tax.yaml", "topics.csv", "manifest.csv"]:

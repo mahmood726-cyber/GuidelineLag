@@ -203,6 +203,20 @@ def main() -> int:
 
     render_dashboard(lag, outputs / "dashboard.html")
 
+    # Pages copy with a dev-mode banner injected before the H1.
+    docs_path = ROOT / "docs" / "index.html"
+    docs_path.parent.mkdir(parents=True, exist_ok=True)
+    html = (outputs / "dashboard.html").read_text(encoding="utf-8")
+    banner = (
+        '<div style="background:#fff3cd;border:1px solid #ffeeba;padding:.75rem 1rem;'
+        'margin:0 0 1rem;border-radius:.25rem;color:#856404;font-size:.95rem">'
+        '<strong>DEV-MODE PREVIEW.</strong> Synthetic inputs (seed=42). '
+        'Not release data. Promotion gated on Tasks 7 and 14 — '
+        'see <code>outputs/baseline_dev.json</code> for the release gate.'
+        '</div>'
+    )
+    docs_path.write_text(html.replace("<h1>", banner + "<h1>", 1), encoding="utf-8")
+
     article = compose_article(lag)
     e156_errors = validate_e156(article)
     if e156_errors:
