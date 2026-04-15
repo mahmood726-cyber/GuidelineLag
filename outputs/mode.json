@@ -1,0 +1,11 @@
+{
+  "mode": "dev-release-blocked",
+  "synthetic": true,
+  "seed": 42,
+  "generated_on": "2026-04-15T09:39:15.726271+00:00",
+  "python": "3.13.7",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "pandas": "2.3.3",
+  "numpy": "2.2.6",
+  "notes": "Dev-mode synthetic lag_dataset. Non-release. Task 14 (real PDFs) and Task 7 (Cochrane CD ID verification) must complete before this baseline is promoted to release."
+}

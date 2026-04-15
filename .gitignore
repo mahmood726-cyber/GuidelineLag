@@ -7,6 +7,8 @@ data/pairwise70_cardio/
 data/derived/
 outputs/**/*.html
 outputs/**/*.json
+!outputs/baseline_dev.json
+!outputs/mode.json
 outputs/truthcert/
 !outputs/dashboard/.gitkeep
 .env

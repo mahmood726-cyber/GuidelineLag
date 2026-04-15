@@ -53,4 +53,4 @@ def test_build_lag_dataset_shape():
     df = build_lag_dataset(threshold_dates, citations, l4, bodies=["esc", "acc_aha", "nice", "ccs"])
     assert len(df) == 4   # 1 class x 4 bodies
     assert set(df["body"]) == {"esc", "acc_aha", "nice", "ccs"}
-    assert df[df["body"] == "acc_aha"].iloc[0]["censored_l4"] is True
+    assert bool(df[df["body"] == "acc_aha"].iloc[0]["censored_l4"]) is True

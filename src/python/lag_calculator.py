@@ -75,9 +75,4 @@ def build_lag_dataset(
                 first_citing_pub_date=cite_d, first_l4_pub_date=l4_d,
             ))
     df = pd.DataFrame(rows)
-    # Preserve Python bool identity for censored_* columns (pandas would
-    # otherwise coerce to numpy.bool_ and break `is True` / `is False`).
-    for col in ("censored_cite", "censored_l4"):
-        if col in df.columns:
-            df[col] = df[col].astype(object)
     return df
