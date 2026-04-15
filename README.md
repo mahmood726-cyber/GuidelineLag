@@ -2,6 +2,10 @@
 
 Systematic atlas of cardiology meta-analysis -> guideline adoption lag across ESC, ACC/AHA, NICE, and CCS, for 10 pre-registered drug classes.
 
+> **Status: DEV-MODE (non-release).** `outputs/baseline_dev.json` carries `release_gate.promotable=false`. The committed lag_dataset is produced from synthetic inputs (seed=42) so the full pipeline is reviewable end-to-end, but the numeric results are NOT a claim about real guideline lag. Real-inputs promotion gates on (a) verified `protocol/cd_manual_cardio.csv` and (b) sourced guideline PDFs + extracted refs/recs. See the PR description for the release checklist.
+>
+> Live dev-mode preview: https://mahmood726-cyber.github.io/GuidelineLag/
+
 ## What it does
 
 1. Filters the 501 Cochrane meta-analyses in Pairwise70 to a cardiology subset.
@@ -26,17 +30,24 @@ Systematic atlas of cardiology meta-analysis -> guideline adoption lag across ES
 ## Reproducibility
 
 - `protocol/thresholds.yaml`, `protocol/taxonomy.yaml`, and `protocol/classes.yaml` are pre-registered and committed before any threshold date is computed.
-- `tests/baselines/lag_dataset_frozen.csv` is the committed numerical baseline. Any pipeline change that moves a row triggers baseline review.
-- TruthCert bundle (`outputs/truthcert/bundle.json`) hashes the dataset, protocol, and git commit under an HMAC key supplied via `TRUTHCERT_HMAC_KEY` env var.
+- `outputs/lag_dataset.csv` is the dev-mode numerical snapshot; `outputs/baseline_dev.json` records the frozen per-society medians plus a `release_gate` block.
+- `outputs/truthcert/bundle_dev.json` hashes the dataset, protocol, baseline, and mode manifest under an HMAC key supplied via `TRUTHCERT_HMAC_KEY` (env var, or `.secrets/truthcert_dev_key.txt` which is gitignored). The key is never derived from bundle fields.
 
-## Running the pipeline
+## Running the pipeline (dev-mode)
 
 ```
-set TRUTHCERT_HMAC_KEY=your-secret
-python -m src.python.preflight
-python scripts/run_pipeline.py
-python -m pytest tests/ -v
+# Generate or set the HMAC key once:
+python -c "import secrets; print(secrets.token_hex(32))" > .secrets/truthcert_dev_key.txt
+
+# Synthesize + sign:
+python scripts/synthesize_dev_mode.py
+python scripts/sign_dev_bundle.py
+
+# Test:
+python -m pytest tests/ -q
 ```
+
+For release-mode (real Cochrane RDA + guideline PDFs), Tasks 7 and 14 in `docs/superpowers/plans/2026-04-14-guidelinelag.md` must complete first.
 
 ## Related work
 
