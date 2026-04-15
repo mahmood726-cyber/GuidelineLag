@@ -1,0 +1,43 @@
+version: 1
+registered_on: 2026-04-14
+classes:
+  - id: sglt2i_hfref
+    display_name: SGLT2 inhibitors for HFrEF
+    pivotal_trials: [DAPA-HF, EMPEROR-Reduced]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: sglt2i_hfpef
+    display_name: SGLT2 inhibitors for HFpEF
+    pivotal_trials: [EMPEROR-Preserved, DELIVER]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: pcsk9i
+    display_name: PCSK9 inhibitors post-ACS
+    pivotal_trials: [FOURIER, ODYSSEY OUTCOMES]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: icosapent
+    display_name: Icosapent ethyl
+    pivotal_trials: [REDUCE-IT]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: finerenone_hf
+    display_name: Finerenone for HF
+    pivotal_trials: [FINEARTS-HF]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: arni
+    display_name: ARNI (sacubitril/valsartan)
+    pivotal_trials: [PARADIGM-HF]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: ticagrelor
+    display_name: Ticagrelor post-ACS
+    pivotal_trials: [PLATO]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: glp1_ra_cv
+    display_name: GLP-1 RA CV benefit
+    pivotal_trials: [LEADER, SUSTAIN-6, REWIND]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: colchicine_ccs
+    display_name: Colchicine in chronic coronary syndromes
+    pivotal_trials: [LoDoCo2, COLCOT]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]
+  - id: af_ablation_first_line
+    display_name: AF ablation as first-line rhythm control
+    pivotal_trials: [EAST-AFNET4, STOP-AF, EARLY-AF]
+    bodies_in_scope: [esc, acc_aha, nice, ccs]

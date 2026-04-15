@@ -1,0 +1,41 @@
+{
+  "mode": "dev-release-blocked",
+  "synthetic": true,
+  "seed": 42,
+  "generated_on": "2026-04-15T09:44:25.571273+00:00",
+  "metrics": {
+    "overall_median_lag_to_l4_months": 28.0,
+    "per_body": {
+      "acc_aha": {
+        "median_months": 25.0,
+        "n_reached": 7
+      },
+      "ccs": {
+        "median_months": 35.0,
+        "n_reached": 8
+      },
+      "esc": {
+        "median_months": 22.0,
+        "n_reached": 10
+      },
+      "nice": {
+        "median_months": 40.0,
+        "n_reached": 7
+      }
+    },
+    "spearman_cite_vs_l4": -0.08192835909813061,
+    "n_pairs_total": 40,
+    "n_pairs_reached_l4": 32,
+    "n_pairs_censored_l4": 8,
+    "n_classes": 10
+  },
+  "release_gate": {
+    "promotable": false,
+    "reason": "synthetic_inputs",
+    "required_before_release": [
+      "Task 7: verified cd_manual_cardio.csv (Cochrane CD IDs)",
+      "Task 14: sourced guideline PDFs + extracted recs + refs",
+      "Task 18: rerun synthesize on real inputs with AUC >= 0.70 on SGLT2i HFrEF NICECardiology anchor"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+body,topic,edition_year,ref_number,authors,title,journal,year,doi
+esc,heart_failure,2021,1234,"McMurray JJV et al","Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction","N Engl J Med",2019,10.1056/NEJMoa1911303
+esc,heart_failure,2021,1235,"Packer M et al","Cardiovascular and Renal Outcomes with Empagliflozin in Heart Failure","N Engl J Med",2020,10.1056/NEJMoa2022190
+esc,heart_failure,2021,1400,"Cochrane","SGLT2 inhibitors for heart failure","Cochrane Database Syst Rev",2021,10.1002/14651858.CD013650.pub1

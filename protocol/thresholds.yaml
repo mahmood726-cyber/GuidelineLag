@@ -1,0 +1,59 @@
+version: 1
+registered_on: 2026-04-14
+rule_description: >
+  Threshold-cross occurs in the earliest Study.year at which the cumulative
+  Cochrane pooled hazard ratio has upper 95% CI bound < 0.90 on the
+  Cochrane-standard composite outcome. Uniform anchor across all classes.
+  Rationale: NICE/ESC clinical-significance anchor applied uniformly removes
+  reviewer debate about bespoke class thresholds.
+thresholds:
+  - class_id: sglt2i_hfref
+    outcome: CV death or HF hospitalization
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: sglt2i_hfpef
+    outcome: HF hospitalization
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: pcsk9i
+    outcome: 3-point MACE
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: icosapent
+    outcome: 5-point MACE (REDUCE-IT composite)
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: finerenone_hf
+    outcome: CV death or HF worsening
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: arni
+    outcome: CV death or HF hospitalization
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: ticagrelor
+    outcome: CV death or MI or stroke
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: glp1_ra_cv
+    outcome: 3-point MACE
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: colchicine_ccs
+    outcome: CV death or MI or stroke
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
+  - class_id: af_ablation_first_line
+    outcome: CV death or stroke or HF hospitalization (EAST-AFNET4 composite)
+    metric: HR
+    direction: upper_ci_less_than
+    uci_bound: 0.90
