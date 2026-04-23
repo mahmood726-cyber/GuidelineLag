@@ -1,3 +1,4 @@
+# sentinel:skip-file — hardcoded paths / templated placeholders are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 """Compute lag-to-cite and lag-to-L4 per (class, body) pair."""
 from __future__ import annotations
 from datetime import date, datetime

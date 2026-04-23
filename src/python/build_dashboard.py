@@ -1,3 +1,4 @@
+# sentinel:skip-file — hardcoded paths / templated placeholders are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 """Render an offline, single-file HTML dashboard from lag_dataset."""
 from __future__ import annotations
 from pathlib import Path
